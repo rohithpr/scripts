@@ -1,0 +1,4 @@
+virtualenv -p python3 envname
+
+
+ifconfig # details about ip
