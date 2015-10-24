@@ -17,12 +17,15 @@ def show_message_box():
     return
 
 def get_download_status():
-    tc = transmissionrpc.Client('localhost', port=9091)
-    torrents = tc.get_torrents()
-    for torrent in torrents:
-        if torrent.status == 'downloading':
-            return False
-    return True
+    try:
+        tc = transmissionrpc.Client('localhost', port=9091)
+        torrents = tc.get_torrents()
+        for torrent in torrents:
+            if torrent.status == 'downloading':
+                return False
+        return True
+    except: # Couldn't connect
+        return False
 
 def main():
     all_done = get_download_status()
