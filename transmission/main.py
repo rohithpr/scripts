@@ -1,3 +1,4 @@
+import os
 import threading
 import time
 import Tkinter
@@ -29,7 +30,7 @@ def get_download_status():
 
 def main():
     all_done = get_download_status()
-    if not all_done: # Shutdown
+    if all_done: # Shutdown
         t = threading.Thread(target=show_message_box)
         t.start()
         time.sleep(3)
@@ -39,4 +40,6 @@ def main():
 
 if __name__ == '__main__':
     action = main()
-    print action
+    if action:
+        os.system('/usr/bin/dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop')
+        pass
