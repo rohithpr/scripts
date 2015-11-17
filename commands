@@ -2,3 +2,6 @@ virtualenv -p python3 envname
 
 
 ifconfig # details about ip
+
+
+Firefox is here- /usr/local/etc
