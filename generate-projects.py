@@ -8,22 +8,40 @@ from bs4 import BeautifulSoup as bs4
 
 otherprojects = [
     (
+        'https://github.com/rohithpr/ipc-messenger',
+        'ipc-messenger',
+        'JavaScript',
+        'A package that simplifies communication between workers in a node.js application'
+    ),
+    (
+        'https://github.com/rohithpr/timeout-async/',
+        'timeout-async',
+        'JavaScript',
+        'A node.js package that calls the callback function with default arguments if the async function takes too long'
+    ),
+    (
+        'https://github.com/rohithpr/py-web-search/',
+        'py-web-search',
+        'Python (Requests, BeautifulSoup)',
+        'A Python package to fetch results from different search engines'
+    ),
+    (
+        'https://github.com/rohithpr/vhci/',
+        'vhci',
+        'Python (Flask), JavaScript (jQuery), HTML-CSS (Bootstrap)',
+        'An application to communicate with a Ubuntu laptop using voice commands'
+    ),
+    (
         'https://github.com/rohithpr/bookmark-manager/',
         'Bookmark Manager',
         'Python (Django), JavaScript (jQuery), HTML-CSS (Bootstrap)',
         'A responsive site that stores bookmarks in an easily accessible way and makes efficient use of screen space'
     ),
     (
-        'https://github.com/rohithpr/timeout-async/',
-        'timeout-async',
-        'JavaScript',
-        'An npm package that calls the callback function with default arguments if the async function takes too long'
-    ),
-    (
-        'https://github.com/rohithpr/vhci/',
-        'vhci',
-        'Python (Flask), JavaScript (jQuery)',
-        'An application to communicate with a Ubuntu laptop using voice commands'
+        'https://github.com/rohithpr/clouder-lite/',
+        'Clouder-lite',
+        'Python (Flask), JavaScript (jQuery), HTML-CSS (Bootstrap)',
+        'A Flask app that helps transfer files to and from your computer through a browser'
     ),
     (
         'https://github.com/rohithpr/py-timed-dialog/',
@@ -36,18 +54,6 @@ otherprojects = [
         'reactive',
         'Python',
         'A Python package to write functional reactive programs'
-    ),
-    (
-        'https://github.com/rohithpr/py-web-search/',
-        'py-web-search',
-        'Python (Requests, BeautifulSoup)',
-        'A Python package to fetch results from different search engines'
-    ),
-    (
-        'https://github.com/rohithpr/clouder-lite/',
-        'Clouder-lite',
-        'Python (Flask), JavaScript (jQuery), HTML-CSS (Bootstrap)',
-        'A Flask app that helps transfer files to and from your computer through a browser'
     ),
     (
         'https://github.com/rohithpr/search-api/',
@@ -65,7 +71,7 @@ otherprojects = [
 
 projects = otherprojects
 result = ''
-count = 0
+count = 1
 offset = ''
 
 for project in projects:
@@ -94,13 +100,25 @@ for project in projects:
     result += ''.join(item)
 
     if count == 0:
-        count = 1
-    elif count == 1:
-        count = 2
+        count += 1
+        continue
+
+    if count % 2 == 0:
         result += '<div class="clearfix visible-sm-block visible-md-block"></div>'
-    else:
-        count = 0
+
+    if count % 3 == 0:
         result += '<div class="clearfix visible-lg-block"></div>'
+
+    count += 1
+
+    # if count == 0:
+    #     count = 1
+    # elif count == 1:
+    #     count = 2
+    #     result += '<div class="clearfix visible-sm-block visible-md-block"></div>'
+    # else:
+    #     count = 0
+    #     result += '<div class="clearfix visible-lg-block"></div>'
 
 print(result)
 # soup = bs4(result)
